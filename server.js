@@ -1,9 +1,13 @@
+'use strict'
+
 const express = require('express');
 const app = express();
-const port = 3000;
+const fs = require('fs');
+const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-	res.send('Hello from express');
+	const html = fs.readFileSync('index.html', 'utf-8');
+	res.send(html);
 })
 
 app.listen(port, (err) => {
